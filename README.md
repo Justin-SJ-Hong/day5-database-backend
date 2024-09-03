@@ -68,3 +68,28 @@ npm i express morgan dotenv cors cookie-parser
 npm i -D nodemon
 npm i -D eslint@^8 eslint-config-prettier eslint-plugin-prettier prettier
 ```
+
+## REST API 서버 경로
+
+```
+GET film
+GET film/:id
+GET film/post
+GET film/post/:id
+GET film/post/like/:id?count=true
+GET film/post/like/:id/customer/:customerid
+POST film/post/like
+DELETE film/post/like/:id
+GET film/post/:postId/comment
+POST film/post/:postId/comment
+```
+
+## Postman으로 요청 보내보기 (Smoke Test)
+
+
+
+## Reference
+
+### CRUD
+
+https://www.prisma.io/docs/orm/prisma-client/queries/crud

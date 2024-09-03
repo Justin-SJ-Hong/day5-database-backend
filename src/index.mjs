@@ -3,6 +3,13 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import { filmRouter } from "./feature/film/router.mjs";
+import { postRouter } from "./feature/post/router.mjs";
+import { likeRouter } from "./feature/like/router.mjs";
+import {
+  commentCreateRouter,
+  commentGetRouter,
+} from "./feature/comment/router.mjs";
 
 // .env 파일 불러오기
 dotenv.config();
@@ -32,6 +39,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms"),
 );
+
+app.get("/film/post/:postId/comment", commentGetRouter);
+app.post("/film/post/:postId/comment", commentCreateRouter);
+app.use("/film/post/like", likeRouter);
+app.use("/film/post", postRouter);
+app.use("/film", filmRouter);
 
 // Health Check
 app.get("/health", (_, res) => {
