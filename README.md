@@ -59,3 +59,12 @@ npx prisma migrate dev
 # 배포용 데이터베이스에 적용하는 것은 위험! 잘 되는지 충분히 확인하고 npx prisma migrate deploy로 배포를 할 것.
 # Futher Reading: https://www.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/mental-model
 ```
+
+## HTTP 서버 설정
+
+```bash
+# 서버 초기 설정
+npm i express morgan dotenv cors cookie-parser
+npm i -D nodemon
+npm i -D eslint@^8 eslint-config-prettier eslint-plugin-prettier prettier
+```
