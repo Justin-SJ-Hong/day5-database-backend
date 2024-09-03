@@ -50,12 +50,10 @@ export const likeDelete = async ({ post_id, customer_id }) => {
       },
     },
   });
-  console.log(toDelete);
 
-  const deleted = await prisma.post_reaction.delete({
+  return prisma.post_reaction.delete({
     where: {
       reaction_id: toDelete.reaction_id,
     },
   });
-  console.log(deleted);
 };
