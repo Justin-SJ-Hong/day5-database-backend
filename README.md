@@ -86,7 +86,35 @@ POST film/post/:postId/comment
 
 ## Postman으로 요청 보내보기 (Smoke Test)
 
+### Film
+#### get many
+<img width="1508" height="986" alt="스크린샷 2025-08-13 14 55 28" src="https://github.com/user-attachments/assets/a72dadfb-18ea-4fb1-a3ec-aff63252d769" />
+#### get many query parameter
+<img width="1496" height="992" alt="스크린샷 2025-08-13 14 57 13" src="https://github.com/user-attachments/assets/5fe33c0e-7e12-49e9-b3e7-147ebde43b74" />
+#### get one
+<img width="1496" height="974" alt="스크린샷 2025-08-13 14 58 12" src="https://github.com/user-attachments/assets/44ac0e09-07bc-488e-af91-e7043c3a4205" />
 
+### Film Post
+#### get many
+<img width="1501" height="982" alt="스크린샷 2025-08-13 14 59 14" src="https://github.com/user-attachments/assets/9b89ec09-e665-43e7-a39e-7a6e3b48d61c" />
+#### get one
+<img width="1482" height="777" alt="스크린샷 2025-08-13 14 59 56" src="https://github.com/user-attachments/assets/91e6372d-9eff-46a5-8b6b-8d65fca77218" />
+
+### Like
+#### get count
+<img width="1490" height="652" alt="스크린샷 2025-08-13 15 01 20" src="https://github.com/user-attachments/assets/1a045996-6230-4bf7-bb3c-f1e920243df0" />
+#### get my count
+<img width="1496" height="593" alt="스크린샷 2025-08-13 15 02 29" src="https://github.com/user-attachments/assets/7d1cd0b7-c50a-41bb-8271-f608a9086a3c" />
+#### add like
+<img width="1495" height="716" alt="스크린샷 2025-08-13 15 03 54" src="https://github.com/user-attachments/assets/2988be4c-d6d0-4a7d-8598-32300c59b015" />
+#### delete like
+<img width="1497" height="706" alt="스크린샷 2025-08-13 15 03 24" src="https://github.com/user-attachments/assets/fb1e20b9-00b2-48f5-85be-62eb7c081e6a" />
+
+### Comment
+#### get comments
+<img width="1493" height="937" alt="스크린샷 2025-08-13 15 05 14" src="https://github.com/user-attachments/assets/d59ed160-87c7-451a-9ac6-4f16796f03fe" />
+#### create comment
+<img width="1498" height="733" alt="스크린샷 2025-08-13 15 05 55" src="https://github.com/user-attachments/assets/90a12e40-d5d5-47ce-a229-338638a83005" />
 
 ## Reference
 
