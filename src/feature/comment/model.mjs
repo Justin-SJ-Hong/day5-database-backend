@@ -46,3 +46,18 @@ export const commentUpdate = async ({ comment_id, content }) =>
       content
     }
   });
+
+export const commentDelete = async (comment_id) => {
+  return prisma.$transaction([
+    prisma.mention.deleteMany({
+      where: {
+        comment_id
+      }
+    }),
+    prisma.film_comment.delete({
+      where: {
+        comment_id
+      }
+    })
+  ]);
+};

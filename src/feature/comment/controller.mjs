@@ -1,5 +1,5 @@
 import getPageStartEnd from "../../util/getPageStartEnd.mjs";
-import { commentCreate, commentFindById, commentFindMany, commentUpdate } from "./model.mjs";
+import { commentCreate, commentFindById, commentFindMany, commentUpdate, commentDelete } from "./model.mjs";
 
 export const getAll = async (req, res) => {
   const limit = req.query.limit || 10;
@@ -57,6 +57,43 @@ export const updateOne = async (req, res) => {
   } catch (e) {
     if (e?.code === "P2025") {
       return res.status(404).json({ error: "Comment not found" });
+    }
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
+export const deleteOne = async (req, res) => {
+  const post_id = Number(req.params.postId);
+  const comment_id = Number(req.params.commentId);
+  const requesterId = Number(req.body?.customerId); // 🔸 Body에서 받기
+
+  if (![post_id, comment_id, requesterId].every(Number.isInteger)) {
+    return res.status(400).json({ error: "Bad Request" });
+  }
+
+  try {
+    // 존재/소속 검증
+    const existing = await commentFindById(comment_id);
+    if (!existing || existing.post_id !== post_id) {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+
+    // (선택) 본인만 삭제 허용하려면 아래 주석 해제
+    if (existing.customer_id !== requesterId) {
+      return res.status(403).json({ error: "Forbidden" });
+    }
+
+    await commentDelete(comment_id);
+    // 보통 204 No Content
+    return res.status(204).send();
+  } catch (e) {
+    console.error("DELETE comment error:", e?.code, e?.message);
+
+    if (e?.code === "P2025") {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+    if (e?.code === "P2003") {
+      return res.status(409).json({ error: "Delete blocked by FK constraint" });
     }
     return res.status(500).json({ error: "Internal Server Error" });
   }

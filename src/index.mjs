@@ -9,7 +9,8 @@ import { likeRouter } from "./feature/like/router.mjs";
 import {
   commentCreateRouter,
   commentGetRouter,
-  commentUpdateRouter
+  commentUpdateRouter,
+  commentDeleteRouter
 } from "./feature/comment/router.mjs";
 
 // .env 파일 불러오기
@@ -44,6 +45,7 @@ app.use(
 app.get("/film/post/:postId/comment", commentGetRouter);
 app.post("/film/post/:postId/comment", commentCreateRouter);
 app.put("/film/post/:postId/comment/:commentId", commentUpdateRouter);
+app.delete("/film/post/:postId/comment/:commentId", commentDeleteRouter);
 app.use("/film/post/like", likeRouter);
 app.use("/film/post", postRouter);
 app.use("/film", filmRouter);
