@@ -127,6 +127,14 @@ POST film/post/:postId/comment
 #### create comment
 <img width="1498" height="733" alt="스크린샷 2025-08-13 15 05 55" src="https://github.com/user-attachments/assets/90a12e40-d5d5-47ce-a229-338638a83005" />
 
+#### update comment
+<img width="1487" height="727" alt="update comment" src="https://github.com/user-attachments/assets/08ddef5e-6b94-494c-bd5f-0d539182d4a7" />
+<img width="1500" height="979" alt="update comment result" src="https://github.com/user-attachments/assets/20a08184-9608-41b0-9fcb-260183e3c82a" />
+
+#### delete comment
+<img width="1491" height="618" alt="delete comment" src="https://github.com/user-attachments/assets/7de89d94-2d8c-4dc3-a942-bc0c5305b22d" />
+<img width="1499" height="876" alt="delete comment result" src="https://github.com/user-attachments/assets/46cfe847-1005-4760-9934-4c43f813be00" />
+
 ## Reference
 
 ### CRUD
