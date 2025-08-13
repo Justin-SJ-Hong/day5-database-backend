@@ -1,5 +1,5 @@
 import getPageStartEnd from "../../util/getPageStartEnd.mjs";
-import { commentCreate, commentFindMany } from "./model.mjs";
+import { commentCreate, commentFindById, commentFindMany, commentUpdate } from "./model.mjs";
 
 export const getAll = async (req, res) => {
   const limit = req.query.limit || 10;
@@ -36,3 +36,28 @@ export const createOne = async (req, res) => {
     return res.status(400).json({ error: e.stack });
   }
 };
+
+export const updateOne = async (req, res) => {
+  const content = String(req.body?.content ?? "").trim();
+  const comment_id = Number(req.params.commentId);
+  const post_id = Number(req.body.postId);
+
+  if (!Number.isInteger(post_id) || !Number.isInteger(comment_id) || !content) {
+    return res.status(400).json({ error: "Bad Request" });
+  }
+
+  try {
+    const existing = await commentFindById(comment_id);
+    if(!existing || existing.post_id !== post_id) {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+
+    const result = await commentUpdate({ comment_id, content });
+    return res.status(200).json({ data: result });
+  } catch (e) {
+    if (e?.code === "P2025") {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+}

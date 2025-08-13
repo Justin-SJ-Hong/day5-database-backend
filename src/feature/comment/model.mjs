@@ -29,3 +29,20 @@ export const commentCreate = async ({ post_id, customer_id, content }) =>
       customer_id,
     },
   });
+
+export const commentFindById = (comment_id) =>
+  prisma.film_comment.findUnique({
+    where: {
+      comment_id
+    }
+  });
+
+export const commentUpdate = async ({ comment_id, content }) =>
+  prisma.film_comment.update({
+    where: {
+      comment_id
+    },
+    data: {
+      content
+    }
+  });
